@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Perfect Predictor | GDG Constructor University</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pixel Perfect Predictor</h1>
+        <p>Upload an image to test the AI model's vibe.</p>
+
+        <div class="upload-section">
+            <input type="file" id="imageUpload" accept="image/*">
+            <label for="imageUpload" class="custom-upload-btn">Choose Image</label>
+        </div>
+
+        <div class="preview-section">
+            <img id="imagePreview" style="display: none;" alt="Uploaded Image preview">
+        </div>
+
+        <button id="predict-btn" class="predict-btn" style="display: none;" onclick="predict()">Run AI Scan</button>
+
+        <div id="label-container" class="results-box"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
