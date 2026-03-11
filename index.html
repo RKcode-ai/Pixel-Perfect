@@ -3,26 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Perfect Predictor | GDG Constructor University</title>
+    <title>Pixel Perfect Predictor | GDG Constructor</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="brand-header">
+        <span class="gdg-tag">GDG Constructor University</span>
+        <span class="workshop-tag">Technical Team Workshop</span>
+    </div>
+
     <div class="container">
         <h1>Pixel Perfect Predictor</h1>
-        <p>Upload an image to test the AI model's vibe.</p>
+        <p class="subtitle">Teach AI to see what you see. Built with TensorFlow.js.</p>
 
         <div class="upload-section">
             <input type="file" id="imageUpload" accept="image/*">
-            <label for="imageUpload" class="custom-upload-btn">Choose Image</label>
+            <label for="imageUpload" class="custom-upload-btn">Select Image Data</label>
         </div>
 
         <div class="preview-section">
             <img id="imagePreview" style="display: none;" alt="Uploaded Image preview">
         </div>
 
-        <button id="predict-btn" class="predict-btn" style="display: none;" onclick="predict()">Run AI Scan</button>
+        <button id="predict-btn" class="predict-btn" style="display: none;" onclick="predict()">Initialize Scan</button>
 
         <div id="label-container" class="results-box"></div>
+    </div>
+
+    <div class="footer">
+        Deployed at the AI Showdown • Spring 2026
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
