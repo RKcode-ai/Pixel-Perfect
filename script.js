@@ -1,8 +1,6 @@
-// We assume the model files are in the same directory as index.html
 const URL = "./";
 let model, maxPredictions;
 
-// Load the model as soon as the window loads
 window.onload = async function init() {
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
@@ -12,12 +10,12 @@ window.onload = async function init() {
         maxPredictions = model.getTotalClasses();
         console.log("AI Model Loaded Successfully!");
     } catch (error) {
-        console.error("Model failed to load. Did you upload the 3 Teachable Machine files?", error);
-        document.getElementById("label-container").innerText = "⚠️ Error: Please upload your model.json, metadata.json, and weights.bin files to GitHub.";
+        console.error("Model missing", error);
+        document.getElementById("label-container").innerHTML = 
+            "<p class='placeholder-text' style='color: #EA4335;'>⚠️ Waiting for model files. Did you upload model.json and metadata.json to GitHub?</p>";
     }
 };
 
-// Handle the image upload preview
 const imageUpload = document.getElementById('imageUpload');
 const imagePreview = document.getElementById('imagePreview');
 const predictBtn = document.getElementById('predict-btn');
@@ -28,34 +26,32 @@ imageUpload.addEventListener('change', function(event) {
         const reader = new FileReader();
         reader.onload = function(e) {
             imagePreview.src = e.target.result;
-            imagePreview.style.display = 'block';
-            predictBtn.style.display = 'inline-block'; // Show the scan button
-            document.getElementById('label-container').innerHTML = ''; // Clear old results
+            imagePreview.style.display = 'inline-block';
+            predictBtn.style.display = 'inline-block'; 
+            document.getElementById('label-container').innerHTML = 
+                "<p class='placeholder-text'>Ready to scan.</p>"; 
         }
         reader.readAsDataURL(file);
     }
 });
 
-// Run the image through the AI model
 async function predict() {
     if (!model) {
-        alert("Model is still loading or failed to load. Check console.");
+        alert("Wait a sec, the AI model is still loading or missing!");
         return;
     }
 
-    document.getElementById('label-container').innerHTML = "Scanning...";
+    document.getElementById('label-container').innerHTML = "<p class='placeholder-text'>Scanning pixels...</p>";
 
-    // predict can take in an image, video or canvas html element
     const prediction = await model.predict(imagePreview, false);
     
     let resultHTML = "";
     for (let i = 0; i < maxPredictions; i++) {
-        // Format the percentage beautifully
-        const probability = (prediction[i].probability * 100).toFixed(2);
+        const probability = (prediction[i].probability * 100).toFixed(1);
         resultHTML += `
             <div class="result-row">
                 <span>${prediction[i].className}</span>
-                <span style="color: var(--accent-color); font-weight: bold;">${probability}%</span>
+                <span style="color: var(--g-blue); font-weight: bold;">${probability}%</span>
             </div>
         `;
     }

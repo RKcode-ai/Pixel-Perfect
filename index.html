@@ -4,35 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Perfect Predictor | GDG Constructor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="brand-header">
-        <span class="gdg-tag">GDG Constructor University</span>
-        <span class="workshop-tag">Technical Team Workshop</span>
-    </div>
+    <div class="google-bar"></div>
 
-    <div class="container">
-        <h1>Pixel Perfect Predictor</h1>
-        <p class="subtitle">Teach AI to see what you see. Built with TensorFlow.js.</p>
-
-        <div class="upload-section">
-            <input type="file" id="imageUpload" accept="image/*">
-            <label for="imageUpload" class="custom-upload-btn">Select Image Data</label>
+    <header>
+        <div class="header-content">
+            <span class="logo-text"><span class="g-blue">G</span><span class="g-red">D</span><span class="g-yellow">G</span> Constructor University</span>
+            <span class="badge">Tech Team Workshop</span>
         </div>
+    </header>
 
-        <div class="preview-section">
-            <img id="imagePreview" style="display: none;" alt="Uploaded Image preview">
-        </div>
+    <main class="container">
+        <section class="hero">
+            <h1>Pixel Perfect <span class="g-blue">Predictor</span></h1>
+            <p class="subtitle">An AI vision scanner built with TensorFlow.js. Upload an image and let the neural network do its thing.</p>
+        </section>
 
-        <button id="predict-btn" class="predict-btn" style="display: none;" onclick="predict()">Initialize Scan</button>
+        <section class="app-card">
+            <div class="upload-section">
+                <input type="file" id="imageUpload" accept="image/*">
+                <label for="imageUpload" class="btn btn-primary">Choose Image</label>
+            </div>
 
-        <div id="label-container" class="results-box"></div>
-    </div>
+            <div class="preview-section">
+                <img id="imagePreview" style="display: none;" alt="Uploaded Image preview">
+            </div>
 
-    <div class="footer">
-        Deployed at the AI Showdown • Spring 2026
-    </div>
+            <button id="predict-btn" class="btn btn-action" style="display: none;" onclick="predict()">Run AI Scan</button>
+
+            <div id="label-container" class="results-box">
+                <p class="placeholder-text">Waiting for image data...</p>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <h2>How This Works 🚀</h2>
+            <div class="grid-cards">
+                <div class="card border-blue">
+                    <h3>1. The Data</h3>
+                    <p>We pulled raw image datasets from Google Cloud Storage to train the model on specific classes.</p>
+                </div>
+                <div class="card border-red">
+                    <h3>2. The Brain</h3>
+                    <p>Trained using Google's Teachable Machine to generate a lightweight, browser-based neural network.</p>
+                </div>
+                <div class="card border-green">
+                    <h3>3. The Deploy</h3>
+                    <p>Hosted entirely on GitHub Pages. No backend required. The AI runs locally in your browser!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Built at the GDG Automation Olympics • Spring 2026</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
